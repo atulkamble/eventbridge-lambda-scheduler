@@ -1,0 +1,23 @@
+
+---
+
+### 📁 `.gitignore`
+
+```gitignore
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Lambda build artifacts
+*.zip
+
+# OS and editor files
+.DS_Store
+.env
+.vscode/
+.idea/
+
+# Python virtual environments
+.venv/
+venv/
