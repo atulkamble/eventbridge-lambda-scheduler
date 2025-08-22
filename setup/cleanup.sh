@@ -24,4 +24,14 @@ aws iam delete-role --role-name "$ROLE_NAME" $PROFILE_ARG >/dev/null 2>&1 || tru
 rm -f "$(dirname "$0")/../function.zip" 2>/dev/null || true
 rm -rf "$(dirname "$0")/../package" 2>/dev/null || true
 
+# --- Delete HTTP API (if present) ---
+API_NAME="${API_NAME:-ScheduledLambdaAPI}"
+API_ID=$(aws apigatewayv2 get-apis --region "$REGION" ${PROFILE:+--profile $PROFILE} \
+  --query "Items[?Name=='${API_NAME}'].ApiId | [0]" --output text 2>/dev/null || true)
+
+if [[ -n "${API_ID}" && "${API_ID}" != "None" ]]; then
+  echo "[INFO] Deleting HTTP API: $API_NAME (ID: $API_ID)"
+  aws apigatewayv2 delete-api --api-id "$API_ID" --region "$REGION" ${PROFILE:+--profile $PROFILE} >/dev/null || true
+fi
+
 echo "[SUCCESS] Cleanup complete."
