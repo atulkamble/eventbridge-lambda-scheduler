@@ -1,6 +1,6 @@
 # ⏰ eventbridge-lambda-scheduler
 
-A tiny AWS project that schedules a **Lambda** function with **Amazon EventBridge** (default: every 5 minutes).
+A tiny AWS project that schedules a **Lambda** function with **Amazon EventBridge** (default: every 1 minute).
 
 ![Build](https://img.shields.io/badge/AWS-Lambda%20%2B%20EventBridge-orange)
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
@@ -36,7 +36,7 @@ export REGION=ap-south-1   # default is us-east-1
 # Create/Update Lambda
 ./setup/create_lambda.sh
 
-# Create/Update EventBridge Rule (default: rate(5 minutes))
+# Create/Update EventBridge Rule (default: rate(1 minute))
 ./setup/create_eventbridge_rule.sh
 
 ```
@@ -225,7 +225,7 @@ RULE_NAME="${RULE_NAME:-ScheduledLambdaRule}"
 FUNCTION_NAME="${FUNCTION_NAME:-ScheduledLambdaFunction}"
 REGION="${REGION:-us-east-1}"
 PROFILE_ARG="${PROFILE:+--profile $PROFILE}"
-SCHEDULE_EXPRESSION="${SCHEDULE_EXPRESSION:-rate(5 minutes)}"
+SCHEDULE_EXPRESSION="${SCHEDULE_EXPRESSION:-rate(1 minute)}"
 STATEMENT_ID="${STATEMENT_ID:-EventBridgeInvoke}"
 
 echo "[INFO] Creating/Updating EventBridge rule '$RULE_NAME' with schedule: $SCHEDULE_EXPRESSION"
@@ -303,7 +303,7 @@ echo "[SUCCESS] Cleanup complete."
 ````markdown
 # ⏰ eventbridge-lambda-scheduler
 
-A tiny AWS project that schedules a **Lambda** function with **Amazon EventBridge** (default: every 5 minutes).
+A tiny AWS project that schedules a **Lambda** function with **Amazon EventBridge** (default: every 1 minute).
 
 ![Build](https://img.shields.io/badge/AWS-Lambda%20%2B%20EventBridge-orange)
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
@@ -339,7 +339,7 @@ export REGION=ap-south-1   # default is us-east-1
 # Create/Update Lambda
 ./setup/create_lambda.sh
 
-# Create/Update EventBridge Rule (default: rate(5 minutes))
+# Create/Update EventBridge Rule (default: rate(1 minute))
 ./setup/create_eventbridge_rule.sh
 ````
 
@@ -394,7 +394,7 @@ These can be set before running scripts:
 * `FUNCTION_NAME` (default `ScheduledLambdaFunction`)
 * `RULE_NAME` (default `ScheduledLambdaRule`)
 * `ROLE_NAME` (default `lambda-eventbridge-role`)
-* `SCHEDULE_EXPRESSION` (default `rate(5 minutes)`)
+* `SCHEDULE_EXPRESSION` (default `rate(1 minute)`)
 
 ## 📦 Adding dependencies
 
