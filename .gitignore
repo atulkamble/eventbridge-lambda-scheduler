@@ -1,20 +1,13 @@
-### 📁 `.gitignore`
-
-```gitignore
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
-*.py[cod]
-*$py.class
+*.pyc
 
-# Lambda build artifacts
-*.zip
+# Packaging
+function.zip
+package/
+dist/
+build/
 
-# OS and editor files
+# OS/Editor
 .DS_Store
 .env
-.vscode/
-.idea/
-
-# Python virtual environments
-.venv/
-venv/
