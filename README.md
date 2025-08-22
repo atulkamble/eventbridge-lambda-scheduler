@@ -1,4 +1,45 @@
-Minimal project creates a Lambda function and wires it to an EventBridge schedule (default: every 5 minutes). I’ve added small quality-of-life touches: idempotent scripts, profile/region overrides, a `.gitignore`, and a clean README.
+# ⏰ eventbridge-lambda-scheduler
+
+A tiny AWS project that schedules a **Lambda** function with **Amazon EventBridge** (default: every 5 minutes).
+
+![Build](https://img.shields.io/badge/AWS-Lambda%20%2B%20EventBridge-orange)
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+
+## 🚀 What it does
+
+- Creates/updates a Lambda function (`python3.12`)
+- Creates/updates an EventBridge **rate** rule to invoke the function periodically
+- Grants EventBridge permission to call Lambda
+- One-command cleanup
+
+## 🧰 Prereqs
+
+- AWS CLI configured (`aws configure`)
+- Permissions to manage IAM/Lambda/EventBridge
+- Python + pip (for optional packaging of dependencies)
+- Bash
+
+## 📦 Deploy
+
+```bash
+# Clone
+git clone https://github.com/atulkamble/eventbridge-lambda-scheduler.git
+cd eventbridge-lambda-scheduler
+
+# Make scripts executable
+chmod +x setup/*.sh
+
+# (Optional) use a named AWS CLI profile and region
+export PROFILE=my-aws-profile
+export REGION=ap-south-1   # default is us-east-1
+
+# Create/Update Lambda
+./setup/create_lambda.sh
+
+# Create/Update EventBridge Rule (default: rate(5 minutes))
+./setup/create_eventbridge_rule.sh
+
+```
 
 ---
 
