@@ -39,6 +39,18 @@ export REGION=ap-south-1   # default is us-east-1
 # Create/Update EventBridge Rule (default: rate(1 minute))
 ./setup/create_eventbridge_rule.sh
 
+aws events describe-rule --name ScheduledLambdaRule --region us-east-1
+aws events list-targets-by-rule --rule ScheduledLambdaRule --region us-east-1
+
+aws lambda invoke \
+  --function-name ScheduledLambdaFunction \
+  --payload '{}' \
+  --region us-east-1 \
+  /dev/stdout
+
+
+aws logs tail /aws/lambda/ScheduledLambdaFunction --since 15m --follow --region us-east-1
+
 ```
 
 ---
