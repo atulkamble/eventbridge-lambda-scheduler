@@ -6,7 +6,7 @@ RULE_NAME="${RULE_NAME:-ScheduledLambdaRule}"
 FUNCTION_NAME="${FUNCTION_NAME:-ScheduledLambdaFunction}"
 REGION="${REGION:-us-east-1}"
 PROFILE_ARG="${PROFILE:+--profile $PROFILE}"
-SCHEDULE_EXPRESSION="${SCHEDULE_EXPRESSION:-rate(5 minutes)}"
+SCHEDULE_EXPRESSION="${SCHEDULE_EXPRESSION:-rate(1 Minute)}"
 STATEMENT_ID="${STATEMENT_ID:-EventBridgeInvoke}"
 
 echo "[INFO] Creating/Updating EventBridge rule '$RULE_NAME' with schedule: $SCHEDULE_EXPRESSION"
@@ -45,3 +45,4 @@ aws events put-targets \
   $PROFILE_ARG >/dev/null
 
 echo "[SUCCESS] Rule '$RULE_NAME' targets Lambda '$FUNCTION_NAME'"
+
